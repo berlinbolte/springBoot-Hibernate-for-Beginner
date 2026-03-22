@@ -22,14 +22,61 @@ public class CrudDemoApplication {
 
  			// createStudent(studentDAO);
 
-			// createMultipleStudent(studentDAO);
+			createMultipleStudent(studentDAO);
 
 			// readStudent(studentDAO);
 
 			//queryForStudents(studentDAO);
 
-			queryForStudentsByLastName(studentDAO);
+			// queryForStudentsByLastName(studentDAO);
+
+			// updateStudent(studentDAO);
+
+			//deleteStudent(studentDAO); (My way)
+
+			//deleteStudent(studentDAO);
+			
+			// deleteAllStudents(studentDAO);
 		};
+	}
+
+	private void deleteAllStudents(StudentDAO studentDAO) {
+
+		System.out.println("Deleting ALl students");
+		int numRowsDeleted = studentDAO.deleteAll();
+		System.out.println("Deleted Rows Count " + numRowsDeleted);
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		//Delete the Student
+		int studentId = 4;
+
+		System.out.println("Deleting the Student with ID : " + studentId);
+
+		studentDAO.delete(studentId);
+	}
+	/* My way
+	private void deleteStudent(StudentDAO studentDAO) {
+		int tempStudentId = 1;
+		Student tempStudent = studentDAO.findById(tempStudentId);
+		studentDAO.delete(tempStudent);
+	}*/
+
+	private void updateStudent(StudentDAO studentDAO) {
+		// retrieve the student based on primary id
+		int tempStudentId = 1;
+		System.out.println("Getting the Student with Id : " + tempStudentId);
+
+		Student tempStudent = studentDAO.findById(tempStudentId);
+
+		System.out.println("Updating the student");
+
+		//change first name to Berlin
+		tempStudent.setFirstName("Berlin");
+		studentDAO.update(tempStudent);
+
+		//Display the student
+		System.out.println("Updated student : " + tempStudent.toString());
 	}
 
 	private void queryForStudentsByLastName(StudentDAO studentDAO) {
