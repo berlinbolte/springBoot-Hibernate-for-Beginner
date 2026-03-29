@@ -48,7 +48,7 @@ public class StudentRestController {
         // just index the list... Keep it simple for now
         return theStudents.get(studentId);
     }
-
+    /*
     // Add exception handler  using @ExceptionHandler
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc){
@@ -76,5 +76,5 @@ public class StudentRestController {
 
         // return ResponseEntity
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
+    }*/
 }
